@@ -17,6 +17,11 @@ public class WebhookController {
 
     private final ChatbotService chatbotService;
 
+    @GetMapping("/")
+    public ResponseEntity<String> health() {
+        return ResponseEntity.ok("Chatbot is running!");
+    }
+
     @PostMapping("/webhook")
     public ResponseEntity<WebhookResponse> receiveMessage(@RequestBody WebhookRequest request) {
         WebhookResponse response = chatbotService.handleMessage(request);
